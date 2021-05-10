@@ -32,6 +32,7 @@ namespace ZD5
             if (User.UserList.Any(k => k.Username == txtUsername.Text & k.Password == txtPassword.Text))
             {
                 MessageBox.Show("Zalogowano.");
+                Application.Exit();
             }
             //jesli jest uzytkownik ale nie zgadza sie haslo
             else if (User.UserList.Any(k => k.Username == txtUsername.Text & !(k.Password == txtPassword.Text)))
