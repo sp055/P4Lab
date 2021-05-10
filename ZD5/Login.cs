@@ -28,25 +28,19 @@ namespace ZD5
 
         private void bZaloguj_Click(object sender, EventArgs e) // przy kliknięciu sprawdza podane dane z już istniejącymi
         {
-            foreach (var user in User.UserList) 
+            //wszystko sie zgadza
+            if (User.UserList.Any(k => k.Username == txtUsername.Text & k.Password == txtPassword.Text))
             {
-                //jesli wszystko sie zgadza
-                if (user.Username == txtUsername.Text & user.Password == txtPassword.Text)
-                {
-                    MessageBox.Show("Zalogowano.");
-                }
-
-                //jesli jest uzytkownik ale nie zgadza sie haslo
-                else if (user.Username == txtUsername.Text & !(user.Password == txtPassword.Text))
-                {
-                    MessageBox.Show("Błędne hasło.");
-                }
-
-                //jesli nie ma uzytkownika
-                else 
-                {
-                    MessageBox.Show("Nie znaleziono użytkownika");
-                }
+                MessageBox.Show("Zalogowano.");
+            }
+            //jesli jest uzytkownik ale nie zgadza sie haslo
+            else if (User.UserList.Any(k => k.Username == txtUsername.Text & !(k.Password == txtPassword.Text)))
+            {
+                MessageBox.Show("Błędne hasło.");
+            }
+            else
+            {
+                MessageBox.Show("Nie znaleziono użytkownika.");
             }
         }
     }
