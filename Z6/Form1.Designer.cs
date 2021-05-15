@@ -58,7 +58,6 @@ namespace Z6
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Z6.Properties.Resources.asas;
             this.pictureBox1.Location = new System.Drawing.Point(546, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(242, 147);
