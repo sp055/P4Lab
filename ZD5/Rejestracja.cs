@@ -42,12 +42,11 @@ namespace ZD5
                 MessageBox.Show("Musisz zaakceptować klauzulę RODO.");
             }
             else
-            {   
+            {
                 //tworzy użytkownika z podanych wcześniej danych i przesyła dane do listy żeby zapisać je dla okna Logowanie
-                MessageBox.Show("Pomyślnie zarejestrowano. Możesz się teraz zalogować.");
                 User user = new User(txtUsername.Text, txtPassword.Text);
                 User.AddUserToList(user);
-
+                MessageBox.Show("Pomyślnie zarejestrowano. Możesz się teraz zalogować.");
                 //otwiera okno Logowanie i chowa okno Rejestracja
                 Login oknoLogowania = new Login();
                 oknoLogowania.Show();
@@ -57,16 +56,14 @@ namespace ZD5
 
         static bool SprawdzCzyIstnieje(string a) // funkcja pomocna do sprawdzenia czy taki użytkownik już istnieje
         {
-            bool sprawdz;
-            foreach (var user in User.UserList)
+            if (User.UserList.Exists(x => x.Username == a) == true)
             {
-                if (a == user.Username)
-                {
-                    sprawdz = true;
-                    return sprawdz;
-                }
+                return true;
             }
-            return sprawdz = false;
+            else
+            {
+                return false;
+            }
         }
     }
 }
